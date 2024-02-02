@@ -63,6 +63,7 @@ const DocumentList = ({ parentDocumentId, level = 0 }: DocumentListProps) => {
       >
         No pages inside
       </p>
+
       {documents.map((document) => (
         <div key={document._id}>
           <Item
