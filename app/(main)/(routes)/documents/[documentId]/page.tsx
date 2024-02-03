@@ -1,7 +1,7 @@
 import React from "react";
 
 const DocumentIdPage = () => {
-  return <div></div>;
+  return <div>DocumentIdPage</div>;
 };
 
 export default DocumentIdPage;
