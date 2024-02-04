@@ -24,7 +24,10 @@ const Title = ({ initialData }: TitleProps) => {
     setIsEditing(true);
     setTimeout(() => {
       inputRef.current?.focus();
-      inputRef.current?.setSelectionRange(0, inputRef.current.value.length);
+      inputRef.current?.setSelectionRange(
+        inputRef.current.value.length,
+        inputRef.current.value.length
+      );
     }, 0);
   };
 
@@ -52,10 +55,14 @@ const Title = ({ initialData }: TitleProps) => {
       {isEditing ? (
         <Input
           ref={inputRef}
-          onClick={enableInput}
-          onBlur={disableInput}
-          onChange={onChange}
           onKeyDown={onKeyDown}
+          onChange={onChange}
+          onBlur={() => {
+            // Delay the blur event to allow time for selection
+            setTimeout(() => {
+              disableInput();
+            }, 0);
+          }}
           value={title}
           className="h-7 px-2 focus-visible:ring-transparent"
         />
